@@ -35,3 +35,7 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
 - scale UP: choose an instance that supports enchanced networking
 - scale OUT: add NATs/ subnets and dristribute workload (1 Subnet = 1 NAT)
 - HA by failing over to another NAT
+
+### Endpoints ###
+- when trying to access services like S3 communication happens over the internet
+- to keep the traffic localized (security/regulatory/performance) you can deploy an endpoint and route traffic from subnet to a service
