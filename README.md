@@ -3,6 +3,12 @@ AWS Certification Study Notes
 
 - the WebUI, CLI or SDK are all used to interract with the AWS API
 
+### Best Practices: Developing Cloud Apps ###
+- loosely coupled apps 
+- arhitect for resilience; design for failure
+- log metrics and monitor performance
+- security in every layer
+
 ## 1. VPC - Virtual Private Cloud ##
 - first logical foundation that allows you to create/deploy/configure services & instances
 - logical isolated network in the AWS cloud
@@ -44,12 +50,6 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
 
 ## EC2 ##
 - one of the only services that is not HA
-
-### Best Practices: Developing Cloud Apps ###
-- loosely coupled apps 
-- arhitect for resilience; design for failure
-- log metrics and monitor performance
-- security in every layer
 
 ## S3 ##
 - generic storage, similar to a file store
