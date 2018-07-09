@@ -119,7 +119,12 @@ Performance
   - projects a database by re-keying with the required attributes: partition key || sort key
   - materialized projection - read only - you can't write in a secondary index (changes are propagated from the main table - still pay for WCU)
   - no key constraints in the projection - multiple replies
-  - if attribute is null the item won't appear in the secondary index - sparse projection 
-
+  - if attribute is null the item won't appear in the secondary index - sparse projection
+  - there is a propagation time between base table and secondary - no consistent read
+  
+  Local Secondary Index
+  - use different key for only the sort key
+  - local = non materialized projection (share the Throughput of the base table)
+  - the secondary table is on top of the base one - no propagation time
 
 
