@@ -93,6 +93,9 @@ Performance (https://minops.com/blog/2015/01/aws-s3-performance-tuning/)
 - Network Latency
   * CDN in front of S3 to distribute content
   * choose the region closest to low latency client
+  
+  Best pracitices:
+  - separate input/output buckets
 
 ## DynamoDB ##
 - noSQL database service
@@ -126,5 +129,46 @@ Performance
   - use different key for only the sort key
   - local = non materialized projection (share the Throughput of the base table)
   - the secondary table is on top of the base one - no propagation time
+  
+  Streams
+  - once a change occured to a table, DynamoDb Stream writes async update to a stream -> trigger events
+  
+  Global Tables
+  - global replication recorded in the stream and replicated across regions
+  - consistent reads available only in the region the event was updates - no consistent reads in the other region
+  - last write wins
+  
+  Conditional Write Operations
+  - dynamoDb won't charge for operations if conditional = true
+  - non atomic test and set - optimistic locking with version number
 
+## AWS Lambda ##
+- serverless computer service = manage function execution
+- no inbound connections are blocked
+- only TCP/IP
+- p-trace (debugging) are restricted
+- all calls limited to 5 min
+- Lambda functions can be executed on a regular schedule
+- attach Lambdas to an URL with API Gateway
 
+## Step Functions ##
+- define a state machine (workflow)
+
+## SQS ##
+- pulling messaging service
+
+- FIFO mode - preservsorder, slower, rate limited 300 transactions / second, recommended to use only one single process reading from the queue
+- standard mode - best effort ordering, messages may be duplicated, throughput nearly unlimited, processes need to work well with duplicates
+- push messages into the queue as a producer, consumer consumes the message and deletes it or pushes it back if it doesn't know what to do
+- short poll: non blocking poll - hits only a subset of nodes
+- long poll: tries it's best to return one messag, if there is anything - sample all of the nodes
+
+## SNS ##
+- push messaging service
+
+Use Case: Fan-Out
+
+## Kinesis ##
+- no message deletion, a record stays until the retention window
+- the partition key is used to determine which shard
+- manage partitions and shards explicitly
