@@ -172,3 +172,12 @@ Use Case: Fan-Out
 - no message deletion, a record stays until the retention window
 - the partition key is used to determine which shard
 - manage partitions and shards explicitly
+
+## IAM ##
+- centrally manage users and users permissions in AWS
+- create users, groups, roles and policies
+
+## Cloud Watch ##
+- monitoring service
+- takes as input metrics and generates logs
+- gives log aggregation capabilities
