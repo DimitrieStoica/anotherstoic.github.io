@@ -74,6 +74,7 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
   - check for connection requests over HTTP, HTTPS, TCP & SSL
   
     > Cross-Zone Load Balancing: when enabled the LB probes the instances that are within the AZ and will load balance traffic against this instances. If unchecked it treats the AZ as a single instance disrigarding instances within
+    
     > Connection Draining timeout: when an instance is taken out of rotation, it can be imediately disconected or slowly drained the connections out
   
 - Application Load Balancing:
