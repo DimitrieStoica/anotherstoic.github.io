@@ -53,17 +53,62 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
 - one of the only services that is not HA
 
 ## ELB ##
-- direct and route traffic across a fleet of EC2's = maintain HA and Resiliency
+- directs and routes traffic across a fleet of EC2's = maintain HA and Resiliency
 - distributes requests accross all servers and across multiple AZ's (at least 2)
- * Classic Load Balancing:
-  - routes traffic based on application and traffic information
- * Application Load Balancing:
-  - routes traffic at an advanced application level
+- region wide load balancers
 - internal LB - internal IP address, accessed only from the internal network 
 - external LB - public IP address
-- ELB Listeners check for connection requests over HTTP, HTTPS, TCP & SSL
-- Health Check monitors the health of any instance associated to any ELB by permorming a ping
-- If a response in not received after TTL expired the instance will be noted as unhealty and traffic will not be routed to that instance
+- Health Check monitors the health of any instance associated to any ELB by permorming a ping. If a response in not received after TTL expired the instance will be noted as unhealty and traffic will not be routed to that instance
+
+- Classic Load Balancing:
+  - Layer 4 and Layer 7 LB - SSL termination and processing (better performace for EC2's)
+  - cookie-based sticky session
+  - it can be integrated with Cloud Watch to build advanced metric load balancing (CPU, memory) and not just Round Robin 
+  - it can be integrated with Route 53 for DNS load balancing (multiple ELB's across multiple regions)
+  - supported ports: 25 (SMTP), 80/443 (HTTP/HTTPS), 1024-65535
+  - supports IPv4 and IPv6
+  - only 1 SSL certificate/ELB, but wildcard certificates are supported
+  - does not support EIP - it only works with DNS
+  - supports domain Zone Apex (no need to use www. )
+  - integrates with Cloud Trail for log security analysis
+  - check for connection requests over HTTP, HTTPS, TCP & SSL
+  
+    > Cross-Zone Load Balancing: when enabled the LB probes the instances that are within the AZ and will load balance traffic against this instances. If unchecked it treats the AZ as a single instance disrigarding instances within
+    > Connection Draining timeout: when an instance is taken out of rotation, it can be imediately disconected or slowly drained the connections out
+  
+- Application Load Balancing:
+  - Layer 7 only
+  - content-based routing
+  - supports microservices and containers (it can dynamically map container ports)
+  - integrates with ECS
+  - better performance for streaming
+  - reduced cost
+  - deletion protection - instance can't be deleted until deletion protection is deleted
+  - better Health Checks and Cloud Watch metrics
+  - check for connection requests over HTTP, HTTPS
+  - it supports _sockets_, _path based routing_ & 
+  
+- Listeners: 
+  - define the port and the protocol
+  - each ALB needs 1 Listener and up to 10 Listeners
+  - routing rules are defined on listeners
+  
+- Target Groups:
+  - logical grouping of targets for the LB
+  - accepts EC2, containers - it can't be mixed and match in the same target group
+  - can exist independenlty from the LB
+  - region based but can be associated auto scaling group
+  - up to 100 instances
+  
+- Rules: 
+  - each Listener can have 1 or ore rules for routing requests to a raget group
+  - consists of _conditions_ & _actions_: when a request meets the condition, an action is taken
+  - if a request comes in that doesn't meet any of the conditions, it will use the default rule and sends it to the default target group
+  
+- Health Checks:
+  - ALB's allow custom response codes (200-399)
+  - ALB's provide detailed health check failures
+  - detailed access log information delivered to an S3 bucket indexed by date
 
 ## Auto Scaling ##
 - decrease, increase resources based on demand & load balance traffic evently across multiple instances 
