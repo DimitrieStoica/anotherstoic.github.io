@@ -87,7 +87,7 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
 - deletion protection - instance can't be deleted until deletion protection is deleted
 - better Health Checks and Cloud Watch metrics
 - check for connection requests over HTTP, HTTPS
-- it supports _sockets_, _path based routing_ & 
+- it supports `sockets, path based routing & HTTPv2` 
   
 - Listeners: 
   - define the port and the protocol
