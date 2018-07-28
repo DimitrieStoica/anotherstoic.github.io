@@ -48,8 +48,38 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
 - when trying to access services like S3 communication happens over the internet
 - to keep the traffic localized (security/regulatory/performance) you can deploy an endpoint and route traffic from subnet to a service
 
+# AWS Compute Fundamentals #
 ## EC2 ##
 - one of the only services that is not HA
+
+## ELB ##
+- direct and route traffic across a fleet of EC2's = maintain HA and Resiliency
+- distributes requests accross all servers and across multiple AZ's (at least 2)
+ * Classic Load Balancing:
+  - routes traffic based on application and traffic information
+ * Application Load Balancing:
+  - routes traffic at an advanced application level
+- internal LB - internal IP address, accessed only from the internal network 
+- external LB - public IP address
+- ELB Listeners check for connection requests over HTTP, HTTPS, TCP & SSL
+- Health Check monitors the health of any instance associated to any ELB by permorming a ping
+- If a response in not received after TTL expired the instance will be noted as unhealty and traffic will not be routed to that instance
+
+## Auto Scaling ##
+- decrease, increase resources based on demand & load balance traffic evently across multiple instances 
+- Launch Configuration is a template used to launch new instances: AMI, instance type, spot instances, user data, storage configiguration
+- Auto Scaling group defines the capacity of the group and where the group should place resources 
+
+## Elastic Beanstalk ##
+- install, distribute, maintain applications via cluster of EC2 instances: web applications or worker environemnt
+- the service is free but any resources that are instanciated are payed for (EC2, ELB)
+- Elastic Beanstalk arhitecture:
+  * Applications: collectio of environment vars, configurations, app versions
+  * Application Versions: a specific reference to a section of deployable code usually stored in S3
+  * Environemnt: An application version deployed in AWS
+  * Environemnt Configuration: collection of params and settings on how AWS resources will behave
+  * Configuration Template: baseline for creating AWS resources
+- workflow: create application, upload application version + config, launch environment, manage environment (update to new versions)
 
 ## S3 ##
 - generic storage, similar to a file store
