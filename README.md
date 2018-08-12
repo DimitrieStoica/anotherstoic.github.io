@@ -112,9 +112,15 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
   - detailed access log information delivered to an S3 bucket indexed by date
 
 ## Auto Scaling ##
-- decrease, increase resources based on demand & load balance traffic evently across multiple instances 
-- Launch Configuration is a template used to launch new instances: AMI, instance type, spot instances, user data, storage configiguration
+- decrease, increase resources based on demand (rules & metrics)
+- bootstrap and dynamic configuration for provisioning software on new instances
+- integrates with CloudWatch (ex: if CPU >= 90%)
+- manual scheduled configuration (min || max values, time and date)
+- notifications (SQS, SNS)
+- it is free
 - Auto Scaling group defines the capacity of the group and where the group should place resources 
+- Launch Configuration is a template used to launch new instances: AMI, instance type, spot instances, user data, storage configiguration
+- Scaling Plans - triggers, how to deal with provisioning/ terminating instances
 
 ## Elastic Beanstalk ##
 - install, distribute, maintain applications via cluster of EC2 instances: web applications or worker environemnt
@@ -126,6 +132,49 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
   * Environemnt Configuration: collection of params and settings on how AWS resources will behave
   * Configuration Template: baseline for creating AWS resources
 - workflow: create application, upload application version + config, launch environment, manage environment (update to new versions)
+
+# AWS Storage Fundamentals #
+
+## Ephemeral ##
+- temporarily, local storage 
+- automatically attached to every instance - page file, swap file
+
+## EBS ##
+- it can exist without being attached to an instances
+- it can't be attached attached to more than one instance at a time
+- it can be transferred between AZ's
+- EBS volume data is replicated across multiple servers in the same AZ
+- allos encryption of data, boot volumes & snapshots
+- designed for an annual failure rate (AFR) 0.1% - 0.2% & SLA 99.95%
+
+- Volume Types:
+ * default volume for EC2: GP-SSD (General Purpose SSD) - system boot volumes, small to medium DB's
+ * PIOPS (Provisioned IOPS) - SSD based, I/O intensive, NoSQL/Relational DB's
+ * Throughput Optimized HDD - infrequent data access, cannot be a boot volume
+ * Cold HDD - large volumes of data, lowest storage cost, cannot be a boot volume
+ * Magnetic - infrequent data access
+
+RAID - is a data storage virtualization technology that combines multiple physical disk drive components into one or more logical units for the purposes of data redundancy, performance improvement, or both. RAID is a function of the guest OS. 
+
+IOPS:Size(GiB) ration 1:50
+
+Snapshots:
+- point-in-time snapshots
+- supports incremental snapshots
+- billed only for the changed blocks
+- deleting a snapshots removes only the data not needed by any other snapshots
+- EBS stores snapshots in S3
+- it can be used to resize EBS volumes
+- EBS volumes can be shared or used across regions
+
+## EFS ##
+- network attached storage (~ NFS)
+- simple, petabytes scalable file storage
+- elastic sizing based on adding/removing files
+- data is replicated across multiple AZs
+- supports multiple connections concurently 
+- use cases: Big Data, analytics, media processing, content management
+- connect via direct connect as well
 
 ## S3 ##
 - generic storage, similar to a file store
