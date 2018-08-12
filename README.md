@@ -154,9 +154,9 @@ stateful: return traffic allowed is assumed | stateless: traffic is striclty fil
  * Cold HDD - large volumes of data, lowest storage cost, cannot be a boot volume
  * Magnetic - infrequent data access
 
-RAID - is a data storage virtualization technology that combines multiple physical disk drive components into one or more logical units for the purposes of data redundancy, performance improvement, or both. RAID is a function of the guest OS. 
+> RAID - is a data storage virtualization technology that combines multiple physical disk drive components into one or more logical units for the purposes of data redundancy, performance improvement, or both. RAID is a function of the guest OS. 
 
-IOPS:Size(GiB) ration 1:50
+> IOPS (Input/output operations per second): Size(GiB) ration 1:50
 
 Snapshots:
 - point-in-time snapshots
@@ -177,10 +177,20 @@ Snapshots:
 - connect via direct connect as well
 
 ## S3 ##
-- generic storage, similar to a file store
-- data is stored in S3 buckets as objects via HTTP
+- S3 is a fully managed object storage based system: Highly Available, Highly durable, highly scalable & cost effective
+- data is stored in S3 buckets as objects accessible via HTTP/HTTS
+- file size supported: 0 bytes - 5 terabytes
+- objects stored in S3 have a `durability` of 11 9's as data is replicated across multiple AZs
+
+> Durability: the probability of maintaining your data without it being lost, corruption, degradation of data
+
+- the `availability` of S3 data objects is 4 9's
+
+> Availability: Up time of the service maintaining your data
+
 - buckets:
-  * names must be globally unique
+  * names must be globally unique, buckets are regional based
+  * default: <100 buckets per AWS account
   * names up to 63 characters, only lower case, no period character (bucket name converts to a subdomain when using "." that can't be used with SSL) - bucket name gets converted into DNS
   * can be versioned enabled
   * allows cross regional replication
