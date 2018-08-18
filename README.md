@@ -229,7 +229,19 @@ Data management:
 
 Use cases:
 - data backup - for existing AWS services/ on-premises data
+- static content & websites
+- large data sets (computational, mathematical & scientific data)
+- integration with EBS (store snapshots), CloudTrail (log files are stored in S3), CloudFront (S3 bucket can be used as a CloudFront origin within a distribution)
 
+Pricing:
+- the more storage used, the cost of eeach Gb reduces when a certain treshold is reached
+- others costs: requests (based on actions: PUT, GET, COPY, POST), data transfers
+
+Anti-patterns:
+- data archiving for long term use
+- dynamic & fast changing data
+- file system requirements
+- structured data with queries
 
 - key in S3 = path 
 - version enabled files needs to be all individually deleted (including versions)
