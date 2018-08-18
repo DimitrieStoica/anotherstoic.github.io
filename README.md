@@ -189,8 +189,7 @@ Pricing:
 - connect via direct connect as well
 
 ## S3 ##
-- S3 is a fully managed object storage based system: Highly Available, Highly durable, highly scalable & cost effective
-- data is stored in S3 buckets as objects accessible via HTTP/HTTS
+- S3 is a fully managed object storage based system: `Highly Available`, `Highly durable`, `Highly scalable` & `cost effective`
 - file size supported: 0 bytes - 5 terabytes
 - objects stored in S3 have a `durability` of 11 9's as data is replicated across multiple AZs
 
@@ -200,34 +199,45 @@ Pricing:
 
 > Availability: Up time of the service maintaining your data
 
-- buckets:
-  * names must be globally unique, buckets are regional based
-  * default: <100 buckets per AWS account
-  * names up to 63 characters, only lower case, no period character (bucket name converts to a subdomain when using "." that can't be used with SSL) - bucket name gets converted into DNS
-  * can be versioned enabled
-  * allows cross regional replication
+Buckets:
+- data is stored in S3 buckets as objects accessible via HTTP/HTTS
+- bucket names must be globally unique, buckets are regional based
+- default: <100 buckets per AWS account
+- names up to 63 characters, only lower case, no period character (bucket name converts to a subdomain when using "." that can't be used with SSL) - bucket name gets converted into DNS
+- can be versioned enabled
+- allows cross regional replication
+
+Storage Classes:
+- Standard: 11 9's Durability, 4 9's Availability
+- Standard-Infrequent Access: 11 9's Durability, 3 9's Availability
+- Reduced Reduced Redundancy: 4 9's Durability, 4 9's Availability
+
+Security:
+- Bucket policies: set access controls for accesing data in the bucket associated with - permissions for AWS users
+- Access Control Lists: only control access from users outside the AWS account - public access
+- Data Encryption: server side encryption/ client side encryption
+
+Data management:
+- Versioning: 
+  * allows multiple versions of the same object to exist
+  * recover from accidental deletion
+  * versioning is not enabled by default
+  * once enabled, versioning can't be disabled - only suspended
+  * adds a cost for storing multiple versions of the same object
+- Lifesycle rules:
+  * provides an automatic method of managing the lifecycle of your data stored - move data between storage classes
+
+Use cases:
+- data backup - for existing AWS services/ on-premises data
+
+
 - key in S3 = path 
 - version enabled files needs to be all individually deleted (including versions)
 - encryption in transit HTTPS
 - encryption at rest
 - CORS needs to be configured to a bucket
 
-Operations on Objects: PUT
-- upload object
-- single upload S3 object <= 5GB
-- multipart upload - recommended if size > 100 Mb
-
-Operations on Objects: GET
-- get range of bytes
-- get complete object
-
-Operations on Objects: LIST keys
-
-Operations on Objects: DELETE
-
-Operations on Objects: RESTORE
-- restores an object previosuly archived on Glacier
-
+Operations on Objects: PUT, GET, LIST keys, DELETE, RESTORE (restore an object previosuly archived on Glacier)
 
 Performance (https://minops.com/blog/2015/01/aws-s3-performance-tuning/)
 - Throughput
