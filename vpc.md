@@ -35,7 +35,8 @@
 
 ## VPC Security ##
 
-| Security Groups  | Network Access Control Lists |
+| Security Groups | Network Access Control Lists |
+| --------------- | ---------------------------- |
 | operates at the instance level | operates at the subnet level |
 | supports only ALLOW rules | supports ALLOW and DENY rules |
 | applies to an instance only if associated with an sg | automatically applies to an instance |
