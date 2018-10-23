@@ -5,7 +5,6 @@
 
 > The EC2Config service is started when the instance is booted. It performs tasks during initial instance startup and each time you stop and start the instance.
 
-The EC2 service can be broken down into the following sections:
 ## Amazon Machine Images ##
 - template of pre-configured EC2 instances
 - includes operating system, applications and any custom configuration
@@ -51,3 +50,6 @@ The EC2 service can be broken down into the following sections:
 ## Security ##
 - security groups
 - key pairs
+
+## Pricing ##
+- when an EC2 dedicated instance is stopped, you are charged a full instance hour for volume storage for every transition from a stopped state to a running state
