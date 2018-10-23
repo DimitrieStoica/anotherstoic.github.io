@@ -6,6 +6,14 @@
 - the size of a VPC cannot be changed
 - consists of: subnets, route tables, internet gateways, elastic IPs, endpoints, NAT gateways, peering connections, network ACLs, security groups, VPN
 
+> Default VPC: logically isolated network with a default subnet, security group and an Internet Gateway -> any instance will automatically receive public IP address
+
+### Pricing ###
+- there are no charges for creating and using a VPC <-> accessing AWS resources via your VPC internet gateway is free
+- VPN connections and data transfer are charged (pair per hour basis)
+- no charge for creating a VPC peering connection <->  data transfer across the peering connection is charged
+- no charge for using classic link <-> data transfer across availability zones is charged
+
 ## VPC Core Components ##
 
 ### Subnets ###
