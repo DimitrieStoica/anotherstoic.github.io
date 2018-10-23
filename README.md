@@ -3,6 +3,8 @@ AWS Certification Study Notes
 
 - the WebUI, CLI or SDK are all used to interract with the AWS API
 
+> Amazon CLI tools are signed using GnuPG
+
 ### Best Practices: Developing Cloud Apps ###
 - loosely coupled apps 
 - arhitect for resilience; design for failure
