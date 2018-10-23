@@ -1,8 +1,8 @@
 ## Virtual Private Cloud - VPC ##
 
 - first logical foundation that allows you to create/deploy/configure services & instances
-- logical isolated network in the AWS cloud - private CIDR block of AWS cloud
-- a VPC is region wide -> use all available AZs (a router allows all subnets within a region across the AZs that in the same region to be interconnected across the region)
+- logically isolated network in the AWS cloud - private CIDR block of AWS cloud
+- a VPC is region wide -> use all available AZs
 - the size of a VPC cannot be changed
 - consists of: subnets, route tables, internet gateways, elastic IPs, endpoints, NAT gateways, peering connections, network ACLs, security groups, VPN
 
@@ -42,10 +42,14 @@
 | applies to an instance only if associated with an sg | automatically applies to an instance |
 | STATEFUL: return traffic allowed is assumed | STATELESS: traffic is strictly filtered, return traffic allowed is not assumed |
 
+> For inbound traffic: Network ACL's are evaluated first followed by security groups rules
+
+> For outbound traffic: Security groups are evaluated first followed by Network ACL's
+
 ## VPC NAT Gateways ##
 - allows private instances to get access to the Internet
 - scale UP: choose an instance that supports enhanced networking
-- scale OUT: add NATs/ subnets and distributed workload (1 Subnet = 1 NAT)
+- scale OUT: add NATs per subnets and distribute workload (1 Subnet = 1 NAT)
 - HA by failing over to another NAT
 
 ## Endpoints ##
