@@ -6,6 +6,8 @@
 - the size of a VPC cannot be changed
 - consists of: subnets, route tables, internet gateways, elastic IPs, endpoints, NAT gateways, peering connections, network ACLs, security groups, VPN
 
+> the default limit of route tables allowed per VPC is 200.
+
 > Default VPC: logically isolated network with a default subnet, security group and an Internet Gateway -> any instance will automatically receive public IP address
 
 ### Pricing ###
@@ -42,6 +44,8 @@
 
 ## VPC Security ##
 
+`Security zoning` is creating a group of system components which have similar security levels and a group of common controls
+
 | Security Groups | Network Access Control Lists |
 | --------------- | ---------------------------- |
 | operates at the instance level | operates at the subnet level |
@@ -49,15 +53,20 @@
 | applies to an instance only if associated with an sg | automatically applies to an instance |
 | STATEFUL: return traffic allowed is assumed | STATELESS: traffic is strictly filtered, return traffic allowed is not assumed |
 
-> For inbound traffic: Network ACL's are evaluated first followed by security groups rules
+> for inbound traffic: Network ACL's are evaluated first followed by security groups rules
 
-> For outbound traffic: Security groups are evaluated first followed by Network ACL's
+> for outbound traffic: Security groups are evaluated first followed by Network ACL's
+
+> the maximum number of security groups per network interface an instance in a VPC can belong to is 5.
 
 ## VPC NAT Gateways ##
 - allows private instances to get access to the Internet
 - scale UP: choose an instance that supports enhanced networking
 - scale OUT: add NATs per subnets and distribute workload (1 Subnet = 1 NAT)
 - HA by failing over to another NAT
+- default limit for NAT gateways per Availability Zone is 5
+
+> a NAT gateway in the pending, active, or deleting state counts against your limit
 
 ## Endpoints ##
 - when trying to access services like S3 communication happens over the internet
@@ -70,10 +79,16 @@
 - enables the routing using each other VPC's private IP address -> no overlapping IP address ranges
 - there is no single point of failure or network bandwidth bottleneck between the VPCs
 
+> expiry time for an unaccepted VPC peering connection request is 1 week (168 hours)
+
 ## VPN Connectivity ##
 - a VPN connection refers to the connection between your VPC and your own network
 
 > Virtual Private Gateway: the anchor on the AWS side of the VPN connection
+
+> if a VPN connection have been compromised, you can change the IKE preshared key
+
+> VPN connection-hours are billed for any time your VPN connections are in the "available" state
 
 ### Corporate or home network to Amazon VPC ###
 - extend network to AWS -> use AWS services seamlessly
@@ -99,3 +114,11 @@
 - VPC with public and private subnet
 - VPC with public and private subnets and a hardware of VPN access
 - VPC with private subnet only and hardware VPN access
+
+> the hotplug script that is part of ec2-net-utils used with ENIs generates an interface configuration file suitable for use with DHCP
+
+> a set of DHCP options can't be modified -> create a new set of DHCP and associate them with your VPC
+
+## Elastic network interface (ENI) ##
+- a virtual network interface that you can attach to an instance in a VPC
+- it can include: one public IP address, a MAC address,  source/destination check flag, a description, a primary private IP address, one or more secondary private IP addresses, one Elastic IP address per private IP address
