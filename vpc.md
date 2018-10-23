@@ -15,7 +15,6 @@
 - no charge for using classic link <-> data transfer across availability zones is charged
 
 ## VPC Core Components ##
-
 ### Subnets ###
 - are CIDR blocks within the IP range of your VPC, there can be one or more subnets in a VPC
 - 5 IPs reserved/subnet (first 4 and last 1). For example, in a subnet with CIDR block 172.0.0.0/24, the following five IP addresses are reserved:
@@ -63,3 +62,40 @@
 ## Endpoints ##
 - when trying to access services like S3 communication happens over the internet
 - to keep the traffic localized (security/regulatory/performance) you can deploy an endpoint and route traffic from subnet to a service
+
+## VPC Peering ##
+- network connection between 2 or more VPC's in the same region - same AWS account or different AWS account
+- uses private IP addresses
+- up to 50 VPC Peering connections
+- enables the routing using each other VPC's private IP address -> no overlapping IP address ranges
+- there is no single point of failure or network bandwidth bottleneck between the VPCs
+
+## VPN Connectivity ##
+- a VPN connection refers to the connection between your VPC and your own network
+
+> Virtual Private Gateway: the anchor on the AWS side of the VPN connection
+
+### Corporate or home network to Amazon VPC ###
+- extend network to AWS -> use AWS services seamlessly
+- no overlapping IP ranges
+
++ Hardware based IpSec VPN over the Internet
++ Direct Connect with VPN: 1 or 10 10 gigabit link
++ Software based VPN over the Internet: fully customer managed -> need to manage HA
++ VPN Cloud Hub: hub and spoke mode between a hardware VPN and direct connect option (Amazon VPC, virtual private gateway, with multiple customer gateways) that allows multiple VPN
+
+### Amazon VPC to Amazon VPC ###
++ VPC peering
++ software-based VPNs. In this configuration, you need to have an internet gateway at both VPCs to enable communication between the software-based VPN appliances, fully customer managed -> need to manage HA
++ hardware based IPSEC VPN connection between VPC's
++ VPC to VPC over direct connect
+
+### End user to VPC ###
++ corporate home network to the VPC
++ software remote access VPN
+
+## VPC Scenarios ##
+- VPC with single public subnet
+- VPC with public and private subnet
+- VPC with public and private subnets and a hardware of VPN access
+- VPC with private subnet only and hardware VPN access
