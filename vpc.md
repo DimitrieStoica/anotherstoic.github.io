@@ -2,7 +2,7 @@
 
 - first logical foundation that allows you to create/deploy/configure services & instances
 - logically isolated network in the AWS cloud - private CIDR block of AWS cloud
-- a VPC is region wide -> use all available AZs
+- a VPC is region-wide -> use all available AZs
 - the size of a VPC cannot be changed
 - consists of: subnets, route tables, internet gateways, elastic IPs, endpoints, NAT gateways, peering connections, network ACLs, security groups, VPN
 
@@ -122,3 +122,5 @@
 ## Elastic network interface (ENI) ##
 - a virtual network interface that you can attach to an instance in a VPC
 - it can include: one public IP address, a MAC address,  source/destination check flag, a description, a primary private IP address, one or more secondary private IP addresses, one Elastic IP address per private IP address
+
+> network interfaces that are automatically created and attached to instances terminate when the instance terminates. However, network interfaces created using the command line interface aren't set to terminate when the instance terminates.
