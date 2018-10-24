@@ -53,3 +53,9 @@
 
 ## Pricing ##
 - when an EC2 dedicated instance is stopped, you are charged a full instance hour for volume storage for every transition from a stopped state to a running state
+
+## Limitations ##
+- key-pairs: 5000
+- reserved instances: 20 per AZ per month
+- AMI copies: 50 at a time, no more than 20 coming from a single source region
+
