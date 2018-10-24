@@ -39,6 +39,8 @@
 - performs network address translation for instances that have been assigned public IP addresses
 - if a subnet is associated with a route table that has a route to an Internet gateway = `public subnet`
 
+> `default route table` = initially only a single route: a local route that enables communication within the VPC.
+
 ### Direct Connect ###
 - private dedicated connection between VPC and on prem
 
