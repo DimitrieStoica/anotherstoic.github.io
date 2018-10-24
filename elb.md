@@ -11,6 +11,9 @@
 - supports sticky sessions using cookies - traffic is routed to the same instances as the user continues to access an application
 - enables SSL offloading and supports SSL termination
 
+## TLS termination Elastic ##
+Load Balancing provides integrated certificate management and SSL decryption, allowing you the flexibility to centrally manage the SSL settings of the load balancer and offload CPU intensive work from your application.
+
 ## ELB types ##
 
 ### Classic Load Balancing ###
