@@ -6,8 +6,6 @@
 - the size of a VPC cannot be changed
 - consists of: subnets, route tables, internet gateways, elastic IPs, endpoints, NAT gateways, peering connections, network ACLs, security groups, VPN
 
-> the default limit of route tables allowed per VPC is 200.
-
 > Default VPC: logically isolated network with a default subnet, security group and an Internet Gateway -> any instance will automatically receive public IP address
 
 ### Pricing ###
@@ -41,6 +39,8 @@
 
 > `default route table` = initially only a single route: a local route that enables communication within the VPC.
 
+> for internate routable subnets Internet Gateways provide a route in the table 0.0.0.0/0
+
 ### Direct Connect ###
 - private dedicated connection between VPC and on prem
 
@@ -56,17 +56,16 @@
 | STATEFUL: return traffic allowed is assumed | STATELESS: traffic is strictly filtered, return traffic allowed is not assumed |
 
 > for inbound traffic: Network ACL's are evaluated first followed by security groups rules
-
 > for outbound traffic: Security groups are evaluated first followed by Network ACL's
 
-> the maximum number of security groups per network interface an instance in a VPC can belong to is 5.
+`Security groups`: deny all incoming traffic by default and use allow rules that can filter based on port and protocol
+`Network ACL`: allow all inbloud/outbound traffic by default
 
 ## VPC NAT Gateways ##
 - allows private instances to get access to the Internet
 - scale UP: choose an instance that supports enhanced networking
 - scale OUT: add NATs per subnets and distribute workload (1 Subnet = 1 NAT)
 - HA by failing over to another NAT
-- default limit for NAT gateways per Availability Zone is 5
 
 > a NAT gateway in the pending, active, or deleting state counts against your limit
 
@@ -77,7 +76,6 @@
 ## VPC Peering ##
 - network connection between 2 or more VPC's in the same region - same AWS account or different AWS account
 - uses private IP addresses
-- up to 50 VPC Peering connections
 - enables the routing using each other VPC's private IP address -> no overlapping IP address ranges
 - there is no single point of failure or network bandwidth bottleneck between the VPCs
 
@@ -126,3 +124,13 @@
 - it can include: one public IP address, a MAC address,  source/destination check flag, a description, a primary private IP address, one or more secondary private IP addresses, one Elastic IP address per private IP address
 
 > network interfaces that are automatically created and attached to instances terminate when the instance terminates. However, network interfaces created using the command line interface aren't set to terminate when the instance terminates.
+
+## Limitations ##
+- the default limit of route tables allowed per VPC is 200
+- default limit for NAT gateways per Availability Zone is 5
+- default number of VPC Peering connections is 50
+- the maximum number of security groups per network interface an instance in a VPC can belong to is 5.
+
+## VPC Flow Logs ##
+- is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC
+- it will capture accepted and rejected traffic flow information for all network interfaces in the selected resource
