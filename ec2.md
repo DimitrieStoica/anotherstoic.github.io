@@ -32,6 +32,10 @@
 
 > two-minute warning before the spot instance is automatically terminated 
 
+`reserved instances`- best value for a steady traffic over an extended period
+`on-demand instances`- perfect for handling short term traffic spikes
+`spot instances` - best value for non-critical applications that can afford to be stopped
+
 ## Tenancy ##
 `Shared tenancy`- other customers and users have EC2 instances running on the same host
 `Dedicated tenancy` - instances hosted on hardware that no other customer can access
