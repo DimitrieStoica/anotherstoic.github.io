@@ -36,3 +36,7 @@ Arhitectural Consderations:
 - Route 53 for Health Checks
 - enable HTTPS
 - Cloud Watch for Alarms and Notifications
+
+## How to restrict access to documents, business data, media streams or premium users ##
+- require that your users access your private content by using special CloudFront `signed URLs` or `signed cookies`
+- require that your users access your Amazon S3 content using CloudFront URLs, not Amazon S3 URLs
