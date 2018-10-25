@@ -1,7 +1,11 @@
-# Route 53#
+# Route 53 #
 - AWS DNS service
 
 > DNS = translates domain names into IP addresses (port 53)
+
+`hosted zone` = collection of resource record sets hosted by Route 53. Like a traditional DNS zone file, a hosted zone represents a collection of resource record sets that are managed together under a single domain name
+
+- the name of each resource record set in a hosted zone must end with the name of the hosted zone. For example, the example.com hosted zone can contain resource record sets for www.example.com and accounting.tokyo.example.com subdomains, but cannot contain resource record sets for a www.example.ca subdomain
 
 ## Routing types ##
 ### Simple routing (round robin) ###
