@@ -37,7 +37,7 @@
 - performs network address translation for instances that have been assigned public IP addresses
 - if a subnet is associated with a route table that has a route to an Internet gateway = `public subnet`
 
-> `default route table` = initially only a single route: a local route that enables communication within the VPC.
+> `default route table` = initially only a single route: a local route that enables communication within the VPC. The default route table cannot be deleted
 
 > for internate routable subnets Internet Gateways provide a route in the table 0.0.0.0/0
 
