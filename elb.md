@@ -11,6 +11,8 @@
 - supports sticky sessions using cookies - traffic is routed to the same instances as the user continues to access an application
 - enables SSL offloading and supports SSL termination
 
+> When the user has configured Transmission Control Protocol (TCP) or Secure Sockets Layer (SSL) for both front-end and back-end connections of the Elastic Load Balancer, the load balancer forwards the request to the back-end instances without modifying the request headers unless the proxy header is enabled. 
+
 ## TLS termination Elastic ##
 Load Balancing provides integrated certificate management and SSL decryption, allowing you the flexibility to centrally manage the SSL settings of the load balancer and offload CPU intensive work from your application.
 
