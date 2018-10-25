@@ -15,6 +15,9 @@ AWS Certification Study Notes
 - decrease, increase resources based on demand (rules & metrics)
 - bootstrap and dynamic configuration for provisioning software on new instances
 - integrates with CloudWatch (ex: if CPU >= 90%)
+
+> by default detailed CloudWatch monitoring is enabled for Auto Scaling
+
 - manual scheduled configuration (min || max values, time and date)
 - notifications (SQS, SNS)
 - it is free
