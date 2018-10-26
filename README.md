@@ -11,20 +11,6 @@ AWS Certification Study Notes
 - log metrics and monitor performance
 - security in every layer
 
-## Auto Scaling ##
-- decrease, increase resources based on demand (rules & metrics)
-- bootstrap and dynamic configuration for provisioning software on new instances
-- integrates with CloudWatch (ex: if CPU >= 90%)
-
-> by default detailed CloudWatch monitoring is enabled for Auto Scaling
-
-- manual scheduled configuration (min || max values, time and date)
-- notifications (SQS, SNS)
-- it is free
-- Auto Scaling group defines the capacity of the group and where the group should place resources 
-- Launch Configuration is a template used to launch new instances: AMI, instance type, spot instances, user data, storage configiguration
-- Scaling Plans - triggers, how to deal with provisioning/ terminating instances
-
 ## Elastic Beanstalk ##
 - install, distribute, maintain applications via cluster of EC2 instances: web applications or worker environemnt
 - the service is free but any resources that are instanciated are payed for (EC2, ELB)
