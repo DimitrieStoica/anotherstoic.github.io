@@ -3,7 +3,12 @@
 
 `placement groups` enable applications to get the full-bisection bandwidth and low-latency network performance required for tightly coupled, node-to-node communication typical of HPC applications.
 
-> The EC2Config service is started when the instance is booted. It performs tasks during initial instance startup and each time you stop and start the instance.
+> the EC2Config service is started when the instance is booted. It performs tasks during initial instance startup and each time you stop and start the instance
+
+Enhanced networking enables:
+- more packets per second
+- lower latency
+- less jitter
 
 ## Amazon Machine Images ##
 - template of pre-configured EC2 instances
@@ -26,6 +31,9 @@
 ## Instance purchasing options ##
 - on-demand instances: used for short, irregular workloads
 - reserved instances: purchase an instance type for a set period of time in return for a reduced cost compared to on-demand
+
+> with reserved instances you can change the instance type within the same instance family and you can change the AZ
+
 - spot instances: bid for unused EC2 compute resources
 - dedicated instances
 - dedicated hosts: similar to dedicated instances, however, they offer additional visibility and control over how instances are placed on the physical host
@@ -51,12 +59,18 @@
 
 > ECC memory is necessary for server infrastructure, and all the hardware underlying Amazon EC2 uses ECC memory
 
+> a STOP/RESTART of an EBS-backed EC2 always changes the underlying host computer
+
 ## Security ##
 - security groups
 - key pairs
 
 ## Pricing ##
 - when an EC2 dedicated instance is stopped, you are charged a full instance hour for volume storage for every transition from a stopped state to a running state
+
+## Elastic IP ##
+- remains with an instance when the instance is stopped 
+- if an EIP is attached to an instance that is associated to a different subnet -> instance will be dual-homed
 
 ## Limitations ##
 - key-pairs: 5000
