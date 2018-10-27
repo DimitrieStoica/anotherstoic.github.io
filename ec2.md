@@ -35,13 +35,21 @@ Enhanced networking enables:
 > with reserved instances you can change the instance type within the same instance family and you can change the AZ
 
 - spot instances: bid for unused EC2 compute resources
-- dedicated instances
-- dedicated hosts: similar to dedicated instances, however, they offer additional visibility and control over how instances are placed on the physical host
 
 > two-minute warning before the spot instance is automatically terminated 
 
+- dedicated instances
+
+> dedicated instances may launch on any hardware allocated to the customer
+
+- dedicated hosts: similar to dedicated instances, however, they offer additional visibility and control over how instances are placed on the physical host
+
+>  dedicated hosts allow usage of existing server-bound software licenses
+
 `reserved instances`- best value for a steady traffic over an extended period
+
 `on-demand instances`- perfect for handling short term traffic spikes
+
 `spot instances` - best value for non-critical applications that can afford to be stopped
 
 ## Tenancy ##
