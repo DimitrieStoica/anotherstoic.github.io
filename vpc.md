@@ -31,22 +31,27 @@
 - netmask between CIDR 16-28
 - each subnet must be associated with a Route table and a Network Access Control List
 
+> Public Subnets:
+- must have an Internet Gateway (IGW) attached to the VPC
+- must have a route from the subnet pointing to the outisde world via the IG: 0.0.0.0/0
+
+> Virtual only Subnet: routes raffic only to the VPG
+
+### Route Tables ###
+- attached to the subnet itself
+- define what subnets can talk to which other subnets
+
+> `default route table` = initially only a single route: a local route that enables communication within the VPC. The default route table cannot be deleted
+
 ### Internet Gateway - IGW ###
 - provides connectivity in and out of the VPC
 - provides a target in the VPC route table for Internet-routable traffic
 - performs network address translation for instances that have been assigned public IP addresses
-- if a subnet is associated with a route table that has a route to an Internet gateway = `public subnet`
-
-> `default route table` = initially only a single route: a local route that enables communication within the VPC. The default route table cannot be deleted
-
-> for internate routable subnets Internet Gateways provide a route in the table 0.0.0.0/0
 
 ### Direct Connect ###
 - private dedicated connection between VPC and on prem
 
 ## VPC Security ##
-
-`Security zoning` is creating a group of system components which have similar security levels and a group of common controls
 
 | Security Groups | Network Access Control Lists |
 | --------------- | ---------------------------- |
@@ -58,16 +63,21 @@
 > for inbound traffic: Network ACL's are evaluated first followed by security groups rules
 > for outbound traffic: Security groups are evaluated first followed by Network ACL's
 
-`Security groups`: deny all incoming traffic by default and use allow rules that can filter based on port and protocol
-`Network ACL`: allow all inbloud/outbound traffic by default
+`Default Security groups`: deny all incoming traffic by default
+`Default Network ACL`: allow all inbloud/outbound traffic by default
+
+`Security zoning` is creating a group of system components which have similar security levels and a group of common controls
 
 ## VPC NAT Gateways ##
 - allows private instances to get access to the Internet
+- VPN is initiated by the client side
 - scale UP: choose an instance that supports enhanced networking
 - scale OUT: add NATs per subnets and distribute workload (1 Subnet = 1 NAT)
 - HA by failing over to another NAT
 
 > a NAT gateway in the pending, active, or deleting state counts against your limit
+
+> by default: IPSEC connecton consists of 2 IPSEC tunnels - encryptes transport
 
 ## Endpoints ##
 - when trying to access services like S3 communication happens over the internet
@@ -129,7 +139,8 @@
 - the default limit of route tables allowed per VPC is 200
 - default limit for NAT gateways per Availability Zone is 5
 - default number of VPC Peering connections is 50
-- the maximum number of security groups per network interface an instance in a VPC can belong to is 5.
+- the maximum number of security groups per network interface an instance in a VPC can belong to is 5
+- 5 EIP per region
 
 ## VPC Flow Logs ##
 - is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC
