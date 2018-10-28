@@ -3,14 +3,12 @@
 - fully-managed noSQL database service
 - pay for storage and read/write throughput
 - does not have a schema - flexible schema
-- desgined to be HA - maintains multiple copies of the data across 3 different AZs = eventually consistent (reads might be delayed)
+- desgined to be HA - maintains multiple copies of the data across 3 different AZs <=> eventually consistent (reads might be delayed)
 - fast performance - reads/writes stay consistent when database size increases
 - infinitely scalable with little effort
-
 - supports documents and key-value data structures
 - supports event-driven programming and fine-grained access control
-    used when accessed with end user applications (responsivness over corectness)
-    partition key & / || sort key (if used both sort key needs to be unique)
+- partition key & / || sort key (if used both sort key needs to be unique)
     
 ## DynamoDb Drawbacks ##
 - eventually consistent - does not follow ACID properties
@@ -21,11 +19,13 @@
 - performance limited to provisioned throughput level (throughput can be modified at any time ~ a couple of minutes)
 
 > composit primary key = partition key + sort key = unique identifier
-> sort key can be used to get the data in order
+> the sort key can be used to get the data in order
 
 ## Provisioned Throughput ##
 - capacity needs to be reserved for I/O, but DynamoDB automatically allocate more space as the table grows
 - requests execind capacity unit are throttled and denied with error `privision throughput exceeded exception`
+
+> DynamoDB Auto Scaling is enabled by default (CloudWatch continuously monitors DynamoDB) -> automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime
 
 Read Capacity Units (RCU):
 - one item
