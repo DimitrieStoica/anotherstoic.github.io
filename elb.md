@@ -6,6 +6,8 @@
 - `external LB` - public IP address
 - ELB does not terminate or start instances, but it detects the health of an instance
 
+> Health checks can be customized and send directly from the system to CloudWatch
+
 > it monitors the health of any instance associated to any ELB by performing a ping. If a response in not received after TTL expired the instance will be noted as unhealthy and traffic will not be routed to that instance
 
 - supports sticky sessions using cookies - traffic is routed to the same instances as the user continues to access an application
