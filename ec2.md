@@ -61,7 +61,10 @@ Enhanced networking enables:
 - commands that will run during the first boot cycle
 
 ## Storage options ##
-- EBS volumes -> persistent storage
+- EBS volumes -> persistent storage that is independent from the life of an instance
+
+> by default EBS volumes that are created and attached to an instance at launch time are deleted when instances are terminated. This behavior can be modified by changing the value of the `DeleteOnTermination` flag
+
 - instance store volumes -> ephemeral storage
 
 > ephemeral storage is available for EBS backed AMIs provided the instance size is not micro
