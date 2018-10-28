@@ -61,24 +61,24 @@ Load Balancing provides integrated certificate management and SSL decryption, al
  - container services or ECS: Application LB or Network LB
  - support SSL offloading: Application LB or Classic LB
  
-- Listeners: 
+### Listeners ###
   - define the port and the protocol
   - each ALB needs 1 Listener and up to 10 Listeners
   - routing rules are defined on listeners
   
-- Target Groups:
+### Target Groups ###
   - logical grouping of targets for the LB
   - accepts EC2, containers - it can't be mixed and match in the same target group
   - can exist independently from the LB
   - region based but can be associated auto scaling group
   - up to 100 instances
   
-- Rules: 
+### Rules ###
   - each Listener can have 1 or more rules for routing requests to a target group
   - consists of _conditions_ & _actions_: when a request meets the condition, an action is taken
   - if a request comes in that doesn't meet any of the conditions, it will use the default rule and sends it to the default target group
   
-- Health Checks:
+### Health Checks ###
   - ALB's allow custom response codes (200-399)
   - ALB's provide detailed health check failures
   - detailed access log information delivered to an S3 bucket indexed by date
