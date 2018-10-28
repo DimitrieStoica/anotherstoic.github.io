@@ -12,7 +12,7 @@
 ### Horizontal scaling with Read Replicas ###
 - add a Read Replica to: offload reporting & horizontal scale for read-heavy workloads
 
-> Read Replicas are async
+> Read Replicas are async. Read replicas are available in Amazon RDS for MYSQL, MariaDB, PostgreSQL, and Aurora.
 
 > Horizontal scalling addresses the growing demands of read-heavy applications
 
