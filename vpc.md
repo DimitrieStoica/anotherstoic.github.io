@@ -136,11 +136,15 @@
 > network interfaces that are automatically created and attached to instances terminate when the instance terminates. However, network interfaces created using the command line interface aren't set to terminate when the instance terminates.
 
 ## Limitations ##
-- the default limit of route tables allowed per VPC is 200
-- default limit for NAT gateways per Availability Zone is 5
-- default number of VPC Peering connections is 50
+- max 5 VPC's per region
+- max 500 security groups
+- 5 IGWs per region
+- 10 VPN's per VPC
+- max 200 subnets -> the default limit of route tables allowed per VPC is 200
+- max  NAT gateways per Availability Zone is 5
+- max number of VPC Peering connections is 50
 - the maximum number of security groups per network interface an instance in a VPC can belong to is 5
-- 5 EIP per region
+- max 5 EIP per region
 
 ## VPC Flow Logs ##
 - is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC
