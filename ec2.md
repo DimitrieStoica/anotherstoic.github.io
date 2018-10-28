@@ -1,7 +1,7 @@
 # EC2 #
 - allows to deploy virtual servers
 
-`placement groups` enable applications to get the full-bisection bandwidth and low-latency network performance required for tightly coupled, node-to-node communication typical of HPC applications.
+`Placement groups` enable applications to get the full-bisection bandwidth and low-latency network performance required for tightly coupled, node-to-node communication typical of HPC applications.
 
 > the EC2Config service is started when the instance is booted. It performs tasks during initial instance startup and each time you stop and start the instance
 
@@ -14,7 +14,10 @@ Enhanced networking enables:
 - template of pre-configured EC2 instances
 - includes operating system, applications and any custom configuration
 
-> AMI characteristics: Region, Operating system, Architecture (32-bit or 64-bit), Launch Permissions, Storage for the Root Device
+`AMI characteristics`: Region, Operating system, Architecture (32-bit or 64-bit), Launch Permissions, Storage for the Root Device
+
+> Amazon EC2 uses Amazon S3 for storing AMI's
+
 > When the EC2 instance is launched from an instance store backed AMI, it will not allow the user to configure the shutdown behaviour to “Stop”. It gives a warning that the instance does not have the EBS root volume.
 
 ## Instance types ##
@@ -29,32 +32,30 @@ Enhanced networking enables:
 > Accelerated computing instances enable more parallelism for higher throughput on compute-intensive workloads - Graphics Processing Units (GPUs) or Field Programmable Gate Arrays (FPGAs)
 
 ## Instance purchasing options ##
-- on-demand instances: used for short, irregular workloads
-- reserved instances: purchase an instance type for a set period of time in return for a reduced cost compared to on-demand
+`on-demand instances`:
+- perfect for handling short term traffic spikes
+- used for short, irregular workloads
+
+`reserved instances`:
+- best value for a steady traffic over an extended period
+- purchase an instance type for a set period of time in return for a reduced cost compared to on-demand
 
 > with reserved instances you can change the instance type within the same instance family and you can change the AZ
 
-- spot instances: bid for unused EC2 compute resources
+`spot instances`:
+- bid for unused EC2 compute resources
+- best value for non-critical applications that can afford to be stopped
 
 > two-minute warning before the spot instance is automatically terminated 
-
-- dedicated instances
-
-> dedicated instances may launch on any hardware allocated to the customer
-
-- dedicated hosts: similar to dedicated instances, however, they offer additional visibility and control over how instances are placed on the physical host
-
->  dedicated hosts allow usage of existing server-bound software licenses
-
-`reserved instances`- best value for a steady traffic over an extended period
-
-`on-demand instances`- perfect for handling short term traffic spikes
-
-`spot instances` - best value for non-critical applications that can afford to be stopped
 
 ## Tenancy ##
 `Shared tenancy`- other customers and users have EC2 instances running on the same host
 `Dedicated tenancy` - instances hosted on hardware that no other customer can access
+
+- dedicated instances may launch on any hardware allocated to the customer
+- dedicated hosts: similar to dedicated instances, however, they offer additional visibility and control over how instances are placed on the physical host
+
+>  dedicated hosts allow usage of existing server-bound software licenses
 
 ## User data ##
 - commands that will run during the first boot cycle
@@ -68,6 +69,8 @@ Enhanced networking enables:
 > ECC memory is necessary for server infrastructure, and all the hardware underlying Amazon EC2 uses ECC memory
 
 > a STOP/RESTART of an EBS-backed EC2 always changes the underlying host computer
+
+> Amazon EC2 uses Amazon S3 to store snapshots
 
 ## Security ##
 - security groups
