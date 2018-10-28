@@ -29,7 +29,7 @@
 - 100 launch configurations per region
 - 20 EC2 instances perregion
 
-## Methods##
+## Methods ##
 - Launch: adds a new EC2 instance
 - Terminate: remove an EC2 instance
 - Healthcheck: checks the health of an instance if told by EC2 or ELB
