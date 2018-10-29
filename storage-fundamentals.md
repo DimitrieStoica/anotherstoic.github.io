@@ -64,4 +64,4 @@ Pricing:
 | Request Rate   | very high     | very high | low - very high | low |
 | Cost           | ~ EC2 cost | $$ | $ | $ |
 | Durability     | low | high | very high | very high |
-| Hot -------------------------------->  Cold |
+ Hot -------------------------------------->  Cold 
