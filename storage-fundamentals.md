@@ -53,3 +53,15 @@ Pricing:
 - supports multiple connections concurently 
 - use cases: Big Data, analytics, media processing, content management
 - connect via direct connect as well
+
+## Storage Comparision ##
+
+|                |  Instance Store | EBS | S3 | Glacier |
+| ---------------|-----------------| ----|----|---------|
+| Average latency| ms              | ms  | ms, sec, min | min, hr |
+| Data volume    | 4 Gb - 48 Tb | 1 Gb - 16 Tib | unlimited | unlimited |
+| Item           | block storage | block storage | 5 Tb | 40 Tb |
+| Request Rate   | very high     | very high | low - very high | low |
+| Cost           | ~ EC2 cost | $$ | $ | $ |
+| Durability     | low | high | very high | very high |
+| Hot -------------------------------->  Cold |
