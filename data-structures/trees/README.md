@@ -21,12 +21,12 @@
 - used to eliminate parts of the search base for a more efficient search
 
 ## Balanced vs. Unbalanced
-1. Complete Binary Tree: every level of the tree is fully filled, except for perhaps the last level (always left to right)
+1. `Complete Binary Tree`: every level of the tree is fully filled, except for perhaps the last level (always left to right)
 
 > It can be represented as an array: Parent position n -> Children 2n+1 & Children 2n+2
 
-2. Full Binary Tree: every node has zero or two children - no nodes with only one children
-3. Perfect Binary Tree: both full and complete, all leaf nodes are at the same level
+2. `Full Binary Tree`: every node has zero or two children - no nodes with only one children
+3. `Perfect Binary Tree`: both full and complete - all leaf nodes are at the same level
 
 ## Time complexity of operations
 
@@ -40,13 +40,13 @@
 #Tree Traversal Algorithms
 
 ## In-order Traversal
-- the left subtree is visited first, then the root and later the right sub-tree
+- the left subtree is visited first, then the root and later the right sub-tree (lnr)
 
 ## Pre-order Traversal
-- the root node is visited first, then the left subtree and finally the right subtree
+- the root node is visited first, then the left subtree and finally the right subtree (nlr)
 
 ## Post-order Traversal
-- the left node is visited first, then the right subtree and finally the root node
+- the left node is visited first, then the right subtree and finally the root node (lrn)
 
 # Heap
 - it is a complete binary tree -> it is constructed row by row from left ro right
