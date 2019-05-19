@@ -11,8 +11,8 @@
 6. **Leaves**: the leaves are nodes that do not have any children
 
 ## Binary Trees
-- each node has no more than two children - commonly referred to as right and left
-- Binary Tree Depth is roughly: log N
+- each node has no more than two children - commonly referred to as RIGHT and LEFT
+- Binary Tree depth is roughly: **log N**
 
 ## Binary Search Trees
 - the value held by a node’s left child is <= to its own value
