@@ -1,5 +1,4 @@
 # Trees
-
 - widely used data structure
 - a tree is made out of Nodes with zero or several references to other nodes
 
