@@ -4,12 +4,12 @@
 - a tree is made out of Nodes with zero or several references to other nodes
 
 ## Vocabulary
-1. Root: a top-level node that is guaranteed to have a path to every other node
-2. Parent
-3. Child
-4. Descendant: all the nodes that can be reached by following a path of child nodes
-5. Ancestor: any other node for which the node is a descendant
-6. Leaves: the leaves are nodes that do not have any children
+1. **Root**: a top-level node that is guaranteed to have a path to every other node
+2. **Parent**
+3. **Child**
+4. **Descendant**: all the nodes that can be reached by following a path of child nodes
+5. **Ancestor**: any other node for which the node is a descendant
+6. **Leaves**: the leaves are nodes that do not have any children
 
 ## Binary Trees
 - each node has no more than two children - commonly referred to as right and left
@@ -21,12 +21,12 @@
 - used to eliminate parts of the search base for a more efficient search
 
 ## Balanced vs. Unbalanced
-1. `Complete Binary Tree`: every level of the tree is fully filled, except for perhaps the last level (always left to right)
+1. **Complete Binary Tree**: every level of the tree is fully filled, except for perhaps the last level (always left to right)
 
 > It can be represented as an array: Parent position n -> Children 2n+1 & Children 2n+2
 
-2. `Full Binary Tree`: every node has zero or two children - no nodes with only one children
-3. `Perfect Binary Tree`: both full and complete - all leaf nodes are at the same level
+2. **Full Binary Tree**: every node has zero or two children - no nodes with only one children
+3. **Perfect Binary Tree**: both full and complete - all leaf nodes are at the same level
 
 ## Time complexity of operations
 
@@ -37,7 +37,7 @@
 | Insert    | O(log n) eliminate half search space on every move | O(n) tree looks like a tree |
 | Delete    | O(log n) eliminate half search space on every move | O(n) tree looks like a tree |
 
-#Tree Traversal Algorithms
+# Tree Traversal Algorithms
 
 ## In-order Traversal
 - the left subtree is visited first, then the root and later the right sub-tree (lnr)
