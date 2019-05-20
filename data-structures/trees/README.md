@@ -1,5 +1,5 @@
 # Trees
-- widely used data structure
+- trees are widely used data structure
 - a tree is made out of Nodes with zero or several references to other nodes
 
 ## Vocabulary
@@ -48,7 +48,17 @@
 - the left node is visited first, then the right subtree and finally the root node (lrn)
 
 # Heap
-- it is a complete binary tree -> it is constructed row by row from left ro right
+- it is a `complete binary tree` -> it is constructed row by row from left to right
+- max efficient implementation of a priority queue ADT
+- used for sorting
+
+> Abstract Data Type(ADT) - core API that caracterizes a data type
+
+## Operations
+- insert an item with priority
+- pull the highest priority item
+- is empty?
+- peek
 
 ## Time complexity of operations
 
