@@ -16,11 +16,11 @@ def levelOrderTraversal(root):
                 if currentNode is not None:
                     currentLayer.append(currentNode)
 
-                    # process left side
+                    # process left side subtree
                     if (currentNode._left is not None):
                         queue.append(currentNode._left)
 
-                    # process right side
+                    # process right side subtree
                     if (currentNode._right is not None):
                         queue.append(currentNode._right)
 
