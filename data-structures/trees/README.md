@@ -10,6 +10,14 @@
 5. **Ancestor**: any other node for which the node is a descendant
 6. **Leaves**: the leaves are nodes that do not have any children
 
+## Depth
+- the depth of a node is the number of edges from the node to the tree's root node
+- a root node will have a depth of 0.
+
+## Height
+- the height of a node is the number of edges on the longest path from the node to a leaf.
+- a leaf node will have a height of 0.
+
 ## Binary Trees
 - each node has no more than two children - commonly referred to as RIGHT and LEFT
 - Binary Tree depth is roughly: **log N**
