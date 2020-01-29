@@ -6,3 +6,5 @@
 - throttle and monitor requests to protect the backend
 - integrates with AWS Lambda, AWS Marketplace
 - DDoS protection with CloudFront
+
+> JSON schema to validate data going through the API Gateway
