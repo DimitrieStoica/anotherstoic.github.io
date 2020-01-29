@@ -9,7 +9,13 @@
 - supports documents and key-value data structures
 - supports event-driven programming and fine-grained access control
 - partition key & / || sort key (if used both sort key needs to be unique)
-    
+   
+## Read/Write Consistency ##
+- 3 facilities -> write to 2 facilities and async to the 3rd one
+- eventual consistent 
+- strongly consistent - more expensive - read from the master facility
+- transactional = ACID consistency - example: insert data at the same time in multiple tables
+
 ## DynamoDb Drawbacks ##
 - eventually consistent - does not follow ACID properties
 - no flexible query language - queries via API calls ( Managing Tables/ Reading Data/ Modifying Data)
@@ -26,6 +32,10 @@
 - requests execind capacity unit are throttled and denied with error `privision throughput exceeded exception`
 
 > DynamoDB Auto Scaling is enabled by default (CloudWatch continuously monitors DynamoDB) -> automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime
+
+> if RCU or WCU are going over the limit set -> DynamoDB will throttle requests
+
+> RCU & WCU is a metric in Cloud Watch
 
 Read Capacity Units (RCU):
 - one item
@@ -66,9 +76,14 @@ Write Capacity Units (WCU):
 > filtered scans are expensive and slow because DynamoDB needs to reads every single record and compare it with the filter => 1 RCU per read line
 
 ## Secondary Indexes ##
+- define an index to access data with a different condition
 - additional indexes to write querries and search data by other attributes
 - each querry can work only one 1 index
 - compared with scan, Secondary Indexe use less RCU's because "filtering" is done through the index
+
+> for local - partition key is the same and only secondary changes <=> synchronous
+
+> for global - partition key & secondary are different <=> synchronous
 
 ### Global Secondary Indexes ##
 - query across the entire table
@@ -140,3 +155,16 @@ Write Capacity Units (WCU):
     Conditional Write Operations
         dynamoDb won't charge for operations if conditional = true
         non atomic test and set - optimistic locking with version number
+
+## Streams ##
+- read each action to DynamoDB with a DynamoDB Stream and react to ations => event driven architecture
+- data on the stream is configurable => item 
+
+## Data Replication ##
+- replicate cross region with streams
+- race conditions for propagatin data - fixed with metadata time = last one wins 
+
+> use case: active - active 
+
+## Back up & Restore ##
+- full back up, restore, point-in-time recovery (part of the table)
